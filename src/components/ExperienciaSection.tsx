@@ -1,6 +1,12 @@
 import React from 'react';
 
-const experiences = [
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
     icon: 'lock',
     title: 'Privacidad Absoluta',
@@ -18,7 +24,7 @@ const experiences = [
   }
 ];
 
-export default function Experience() {
+const ExperienciaSection: React.FC = () => {
   return (
     <section className="bg-zinc-950/50 py-32 mt-32 border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6">
@@ -30,14 +36,16 @@ export default function Experience() {
             <p className="text-zinc-400 text-lg font-light leading-relaxed mb-8">
               Un entorno brutalista diseñado para la creación artística sin límites. Elevamos el tatuaje a una experiencia de hospitalidad de lujo.
             </p>
-            <div className="w-20 h-1 bg-primary"></div>
+            <div className="w-20 h-1 bg-primary" />
           </div>
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-12">
-            {experiences.map((exp, index) => (
+            {features.map((feature, index) => (
               <div key={index} className="flex flex-col gap-6">
-                <span className="material-symbols-outlined text-primary text-4xl">{exp.icon}</span>
-                <h4 className="text-xl font-bold uppercase tracking-tight">{exp.title}</h4>
-                <p className="text-sm text-zinc-500 leading-relaxed">{exp.description}</p>
+                <span className="material-symbols-outlined text-primary text-4xl">
+                  {feature.icon}
+                </span>
+                <h4 className="text-xl font-bold uppercase tracking-tight">{feature.title}</h4>
+                <p className="text-sm text-zinc-500 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -45,4 +53,6 @@ export default function Experience() {
       </div>
     </section>
   );
-}
+};
+
+export default ExperienciaSection;
